@@ -10,7 +10,7 @@ import Promise from "bluebird";
 import Iconv from "iconv-lite";
 import { createReq } from "./req";
 import optionsUtils from "../utils/optionsUtils";
-import {pageError, spiderError} from "../utils/debugUtils";
+import { spiderError } from "../utils/debugUtils";
 import { generateFilePath } from "../utils/fileUtils";
 
 
