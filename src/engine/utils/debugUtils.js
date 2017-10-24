@@ -17,7 +17,7 @@ let pageError = debug("core:page"),
 let correctUrlError = debug("utils:correctUrl");
 
 
-let scriptsInfo = debug("info");
+let info = debug("info");
 
 
 export {
@@ -28,5 +28,5 @@ export {
 
     correctUrlError,
 
-    scriptsInfo
+    info
 }

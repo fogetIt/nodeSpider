@@ -5,14 +5,14 @@
 'use strict';
 import mongodb from "mongodb";
 import settings from "../../settings";
-import { pipelineError } from "../utils/debugUtils";
+import { pipelineError, info } from "../utils/debugUtils";
 
 
 class DebugPipeline {
     save(result) {
         let keyId = result.keyId;
         if (keyId) {
-            pipelineError(JSON.stringify(result));
+            info(JSON.stringify(result));
         } else {
             pipelineError("keyId is needed when p.put({'keyId':'xxx', ...})")
         }
@@ -40,7 +40,7 @@ class MongodbPipeline {
                         if(err) {
                             pipelineError("error to save!");
                         } else {
-                            pipelineError(JSON.stringify(result));
+                            info(JSON.stringify(result));
                         }
                     });
                 db.close();

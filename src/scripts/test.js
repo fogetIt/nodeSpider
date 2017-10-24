@@ -3,7 +3,7 @@
  * @Last Modified time: 2017-08-22 16:51:42
  */
 'use strict';
-import { scriptsInfo } from "../engine/utils/debugUtils";
+import { info } from "../engine/utils/debugUtils";
 
 
 let startUrls = [
@@ -28,6 +28,7 @@ let procedure = p => {
                 fileName: fileName,
                 fileFieldName: keyId
             };
+            info(extData);
             p.addReq(imgUrl, undefined, "download", undefined, extData)
         });
     } else if(p.isLevel("img")) {
