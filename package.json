@@ -1,5 +1,5 @@
 {
-  "name": "simpleSpider",
+  "name": "nodeSpider",
   "version": "1.0.0",
   "description": "nodejs spider",
   "main": "server.js",
