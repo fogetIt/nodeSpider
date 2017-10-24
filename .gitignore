@@ -1,0 +1,22 @@
+# fold
+.idea/
+node_modules/
+
+lib/*
+!lib/text
+
+public/excel/*
+!public/excel/text
+public/images/*
+!public/images/text
+
+src/scripts/*
+!src/scripts/test.js
+
+
+# file
+*.py[cod]
+*.log
+
+src/settings.js
+note.md
