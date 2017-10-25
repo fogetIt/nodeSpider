@@ -39,7 +39,8 @@ class Page {
         if (typeof arg === "object") {
             this.results.push(arg);
         } else {
-            pageError("arg must is json, example: page.put({....})");
+            pageError("method Page.put() error");
+            throw new Error("arg must is json, example: page.put({....})");
         }
     };
 

@@ -14,7 +14,8 @@ class DebugPipeline {
         if (keyId) {
             saveInfo(JSON.stringify(result));
         } else {
-            pipelineError("keyId is needed when p.put({'keyId':'xxx', ...})")
+            pipelineError("method DebugPipeline.save() error");
+            throw new Error("keyId is needed when p.put({'keyId':'xxx', ...})");
         }
     }
 }
@@ -50,7 +51,8 @@ class MongodbPipeline {
             result["__timer__"] = parseInt(new Date().getTime() / 1000);
             this.updateOne.call(this, keyId, result)
         } else {
-            pipelineError("keyId is needed when p.put({'keyId':'xxx', ...})")
+            pipelineError("method MongodbPipeline.save() error");
+            throw new Error("keyId is needed when p.put({'keyId':'xxx', ...})");
         }
     };
 }

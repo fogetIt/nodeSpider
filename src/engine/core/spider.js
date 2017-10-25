@@ -39,7 +39,8 @@ class Spider {
             } else if (req.method === "post") {
                 this.post.apply(this, [req, options]);
             } else {
-                spiderError("Temporary only support get/post request!")
+                spiderError("method Spider.run() error");
+                throw new Error("Temporary only support get/post request!");
             }
         }
     };
@@ -50,7 +51,8 @@ class Spider {
         requestPromise(options).then(resp => {
             let codeSupport = Iconv.encodingExists(req.code);
             if (!codeSupport) {
-                spiderError("Encoding is not supported!");
+                spiderError("method Spider.get()");
+                throw new Error("Encoding is not supported!");
             } else if (resp.statusCode !== 200) {
                 spiderError("Request error!");
             } else {
@@ -91,7 +93,8 @@ class Spider {
             fileName = req.extData.fileName,
             fileFieldName = req.extData.fileFieldName;
         if (!keyId || !fileDir || !fileName || !fileFieldName) {
-            spiderError("Download error!");
+            spiderError("method Spider.download() error");
+            throw new Error("Download error!");
         } else {
             let filePath = generateFilePath(fileDir, fileName);
             let stream = fs.createWriteStream(filePath);
