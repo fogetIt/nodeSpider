@@ -21,11 +21,12 @@ let job = (currentRelay, currentPipeline, scriptModule, proxies) => {
 
 export default (scriptName, currentRelay, currentPipeline, proxies) => {
     let scriptModule = require("../scripts/" + scriptName),
-        code = scriptModule.site["code"] || "utf-8",
         startUrls = scriptModule.startUrls;
 
-    for (let url of startUrls) {
-        let req = new Req(url, code);
+    for (let seq of startUrls) {
+        let url = seq.url,
+            code = seq.code || "utf-8",
+            req = new Req(url, code);
         currentRelay.pushItem(req);
     }
 

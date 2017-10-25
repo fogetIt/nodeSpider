@@ -7,11 +7,11 @@ import { info } from "../engine/utils/debugUtils";
 
 
 let startUrls = [
-    "https://tieba.baidu.com/f?kw=%E5%AF%92%E6%AD%A6%E7%BA%AA%E5%B9%B4&ie=utf-8&tab=album",
+    {
+        url: "https://tieba.baidu.com/f?kw=%E5%AF%92%E6%AD%A6%E7%BA%AA%E5%B9%B4&ie=utf-8&tab=album",
+        code: "utf-8"
+    },
 ];
-
-
-let site = {};
 
 
 let procedure = p => {
@@ -38,6 +38,5 @@ let procedure = p => {
 
 export {
     startUrls,
-    site,
     procedure
 }
