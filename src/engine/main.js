@@ -1,6 +1,6 @@
 /*
  * @Date:   2017-08-13 18:02:51
- * @Last Modified time: 2017-08-15 21:38:34
+ * @Last Modified time: 2017-10-25 12:34:47
  */
 'use strict';
 import async from "async";
@@ -31,7 +31,7 @@ export default (scriptName, currentRelay, currentPipeline, proxies) => {
     }
 
     let asyncFuncs = [];
-    for(let i=0; i<asyncLimit; i++) {
+    for (let i = 0; i < asyncLimit; i++) {
         asyncFuncs.push(async.apply(job, currentRelay, currentPipeline, scriptModule, proxies))
     }
     async.parallel(asyncFuncs);

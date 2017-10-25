@@ -1,7 +1,7 @@
 /*
-* @Date:   2017-10-24 10:12:33
-* @Last Modified time: 2017-10-24 10:12:36
-*/
+ * @Date:   2017-10-24 10:12:33
+ * @Last Modified time: 2017-10-25 12:34:29
+ */
 'use strict';
 /*
 installed by babel-core's dependencies
@@ -18,7 +18,7 @@ let correctUrlError = debug("utils:correctUrl");
 
 
 let info = debug("info"),
-    save = debug("save");
+    saveInfo = debug("save");
 
 
 export {
@@ -30,5 +30,5 @@ export {
     correctUrlError,
 
     info,
-    save
+    saveInfo
 }

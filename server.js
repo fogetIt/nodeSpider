@@ -1,6 +1,6 @@
 /*
  * @Date:   2017-08-13 18:04:58
- * @Last Modified time: 2017-08-15 21:37:56
+ * @Last Modified time: 2017-10-25 12:35:13
  */
 'use strict';
 /*
@@ -14,7 +14,7 @@ import engine, { Relay, DebugPipeline, MongodbPipeline } from "./src/engine/main
 
 let createChild = scriptName => {
     let proxies = settings.proxies,
-        Pipeline = settings.mongo ? MongodbPipeline: DebugPipeline,
+        Pipeline = settings.mongo ? MongodbPipeline : DebugPipeline,
         currentRelay = new Relay(),
         currentPipeline = new Pipeline(scriptName);
     engine(
@@ -36,7 +36,7 @@ program
 
 if (program.scriptName) {
     createChild(program.scriptName)
-}else {
+} else {
     console.log("Run server without parameter!");
 }
 

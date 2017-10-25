@@ -1,18 +1,18 @@
 /*
  * @Date:   2017-08-13 22:24:33
- * @Last Modified time: 2017-08-15 21:38:10
+ * @Last Modified time: 2017-10-25 12:33:00
  */
 'use strict';
 import mongodb from "mongodb";
 import settings from "../../settings";
-import { pipelineError, save } from "../utils/debugUtils";
+import { pipelineError, saveInfo } from "../utils/debugUtils";
 
 
 class DebugPipeline {
     save(result) {
         let keyId = result.keyId;
         if (keyId) {
-            save(JSON.stringify(result));
+            saveInfo(JSON.stringify(result));
         } else {
             pipelineError("keyId is needed when p.put({'keyId':'xxx', ...})")
         }
@@ -28,24 +28,20 @@ class MongodbPipeline {
 
     updateOne(keyId, result) {
         let self = this,
-            mongodbUrl = 'mongodb://' + settings.mongodbHost +  ':' + settings.mongodbPort + '/spider';
+            mongodbUrl = 'mongodb://' + settings.mongodbHost + ':' + settings.mongodbPort + '/spider';
         this.MongoClient.connect(mongodbUrl, (err, db) => {
-                let collection = db.collection(self.scriptName);
-                // 插入数据
-                collection.updateOne(
-                    { "keyId": keyId },
-                    { "$set": result },
-                    { "upsert": true },
-                    (err, res) => {
-                        if(err) {
-                            pipelineError("error to save!");
-                        } else {
-                            save(JSON.stringify(result));
-                        }
-                    });
-                db.close();
-            }
-        )
+            let collection = db.collection(self.scriptName);
+            // 插入数据
+            collection.updateOne({ "keyId": keyId }, { "$set": result }, { "upsert": true },
+                (err, res) => {
+                    if (err) {
+                        pipelineError("error to save!");
+                    } else {
+                        saveInfo(JSON.stringify(result));
+                    }
+                });
+            db.close();
+        })
     };
 
     save(result) {
@@ -53,6 +49,8 @@ class MongodbPipeline {
         if (keyId) {
             result["__timer__"] = parseInt(new Date().getTime() / 1000);
             this.updateOne.call(this, keyId, result)
+        } else {
+            pipelineError("keyId is needed when p.put({'keyId':'xxx', ...})")
         }
     };
 }
@@ -62,4 +60,3 @@ export {
     DebugPipeline,
     MongodbPipeline
 };
-

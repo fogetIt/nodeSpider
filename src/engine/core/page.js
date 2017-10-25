@@ -1,6 +1,6 @@
 /*
  * @Date:   2017-08-13 18:16:38
- * @Last Modified time: 2017-08-15 21:38:07
+ * @Last Modified time: 2017-10-25 12:33:38
  */
 'use strict';
 import { Req } from "./req";
@@ -20,7 +20,7 @@ class Page {
         this.response = response;
         this.relay = currentRelay;
         this.text = this.response.text;
-        this.url = this.request ? this.request.url: "";
+        this.url = this.request ? this.request.url : "";
     }
 
     isDefaultLevel() {
@@ -55,7 +55,7 @@ class Page {
      *     False    默认， 如果url已经爬取过， 就不向队列添加
      *     True     强制向队列添加url
      */
-    addReq(url="", code="utf-8", method = "get", level = "", extData = {}, force = false) {
+    addReq(url = "", code = "utf-8", method = "get", level = "", extData = {}, force = false) {
         let validUrl = correctUrl(url, this.request.url);
         if (validUrl) {
             let req = new Req(validUrl, code, method, level, extData);

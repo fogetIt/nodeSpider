@@ -1,7 +1,7 @@
 /*
-* @Date:   2017-10-23 16:28:46
-* @Last Modified time: 2017-10-23 16:36:33
-*/
+ * @Date:   2017-10-23 16:28:46
+ * @Last Modified time: 2017-10-25 12:34:34
+ */
 'use strict';
 import fs from "fs";
 import path from "path";
@@ -15,7 +15,7 @@ const imagesDir = path.join(publicDir, "images");
 let generateFilePath = (fileDir, fileName) => {
     let dirPath = path.join(imagesDir, fileDir),
         hasDir = fs.existsSync(dirPath);
-    if(!hasDir) {
+    if (!hasDir) {
         fs.mkdirSync(dirPath);
     }
     return path.join(dirPath, fileName);

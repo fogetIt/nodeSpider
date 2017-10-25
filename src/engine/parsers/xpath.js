@@ -1,6 +1,6 @@
 /*
  * @Date:   2017-08-15 11:49:35
- * @Last Modified time: 2017-10-20 12:40:13
+ * @Last Modified time: 2017-10-25 12:34:10
  */
 'use strict';
 /**
@@ -40,4 +40,4 @@ let parser = (rules, text) => {
 };
 
 
-export  default parser;
+export default parser;

@@ -1,6 +1,6 @@
 /*
  * @Date:   2017-08-13 18:16:59
- * @Last Modified time: 2017-08-17 14:47:58
+ * @Last Modified time: 2017-10-25 12:33:58
  */
 'use strict';
 import fs from "fs";
@@ -34,9 +34,9 @@ class Spider {
             if (req.method === "get") {
                 // 给回调函数传递对象（引用）
                 this.get.apply(this, [req, options]);
-            } else if(req.method === "download") {
+            } else if (req.method === "download") {
                 this.download.apply(this, [req, options]);
-            } else if(req.method === "post") {
+            } else if (req.method === "post") {
                 this.post.apply(this, [req, options]);
             } else {
                 spiderError("Temporary only support get/post request!")
@@ -49,7 +49,7 @@ class Spider {
         // request(req.url, function(error, resp, body) {...});
         requestPromise(options).then(resp => {
             let codeSupport = Iconv.encodingExists(req.code);
-            if(!codeSupport) {
+            if (!codeSupport) {
                 spiderError("Encoding is not supported!");
             } else if (resp.statusCode !== 200) {
                 spiderError("Request error!");
@@ -90,20 +90,20 @@ class Spider {
             fileDir = req.extData.fileDir,
             fileName = req.extData.fileName,
             fileFieldName = req.extData.fileFieldName;
-        if(!keyId || !fileDir || !fileName || !fileFieldName) {
+        if (!keyId || !fileDir || !fileName || !fileFieldName) {
             spiderError("Download error!");
         } else {
             let filePath = generateFilePath(fileDir, fileName);
             let stream = fs.createWriteStream(filePath);
-            try{
+            try {
                 request(options).pipe(stream)
-                    .on('error', function(e) {spiderError(e);})
+                    .on('error', function(e) { spiderError(e); })
                     .on('close', function() {
                         let result = { keyId: keyId };
                         result[fileFieldName] = fileDir + "/" + fileName;
                         self.pipeline.save(result);
                     });
-            } catch (e){
+            } catch (e) {
                 spiderError(req.url);
                 spiderError(e);
                 try {
