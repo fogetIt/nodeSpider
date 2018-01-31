@@ -1,10 +1,10 @@
 ##### install dependencies
-```shell
+```bash
 npm run setup
 ```
 
 ##### debug
-```shell
+```bash
 : "方法一：
 编译 es6 -> es5
 修改 server.js 引用路径
